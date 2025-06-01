@@ -13,19 +13,18 @@
         android:theme="@style/Theme.Test_Platform"
         tools:targetApi="31">
 
-        <!-- DashboardActivity sebagai Start Layout -->
-        <activity
-            android:name=".DashboardActivity"
-            android:exported="true">
+        <!-- Splash Screen sebagai Start Layout -->
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+
         <!-- MainActivity -->
         <activity
-            android:name=".Splash_screen"
+            android:name=".splash"
             android:exported="false" />
 
     </application>
