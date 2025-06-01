@@ -41,11 +41,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Input Password -->
+
+        <!-- Tombol Login -->
+
         <EditText
             android:id="@+id/et_password"
             android:layout_width="253dp"
             android:layout_height="48dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:background="#2A584F"
             android:hint="Password"
             android:padding="12dp"
@@ -55,7 +58,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-        <!-- Tombol Login -->
         <Button
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"
