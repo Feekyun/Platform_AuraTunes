@@ -41,6 +41,16 @@ android {
     dataBinding {
         enable = true
     }
+    sourceSets {
+        getByName("main") {
+            java {
+                srcDirs("src\\main\\java", "src\\main\\java\\data_class",
+                    "src\\main\\java",
+                    "src\\main\\java\\data_class"
+                )
+            }
+        }
+    }
 }
 
 dependencies {
@@ -52,13 +62,22 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.media3:media3-common:1.3.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-
-    // Retrofit buat HTTP Client
+    //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    // Converter JSON ke Object Kotlin
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    // OkHttp (Opsional, buat logging)
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
-}
 
+    //GSON Converter
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //Picasso for Gson to Image
+    implementation ("com.squareup.picasso:picasso:2.8")
+
+}
