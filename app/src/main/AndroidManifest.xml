@@ -29,5 +29,8 @@
         <activity
             android:name=".player_activity"
             android:exported="false"/>
+        <activity
+            android:name=".login_page"
+            android:exported="false"/>
     </application>
 </manifest>

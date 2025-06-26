@@ -26,21 +26,21 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
 
-    // Tambahkan ini buat aktifin Data Binding & View Binding
-    viewBinding {
-        enable = true
+    // ✅ Tambahkan di sini
+    buildFeatures {
+        viewBinding = true // opsional, kalau kamu nggak pakai, bisa hapus
     }
-    dataBinding {
-        enable = true
-    }
+
     sourceSets {
         getByName("main") {
             java {
