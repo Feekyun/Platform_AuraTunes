@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test_platform.API_interfaces.DataInterface
 import com.example.test_platform.data_class.album
 import com.example.test_platform.fragments.history
-import com.rockbuilds.soundify.Fragments.notifications
-import com.rockbuilds.soundify.Fragments.setting
-import com.rockbuilds.soundify.R
-import com.rockbuilds.soundify.adapters.AlbAdapter
-import com.rockbuilds.soundify.adapters.Albs_adapter
-import com.rockbuilds.soundify.adapters.PLadapter
+import com.example.test_platform.fragments.notification
+import com.example.test_platform.fragments.setting
+import com.example.test_platform.R
+import com.example.test_platform.adapters.albadapter
+import com.example.test_platform.adapters.albs_adapter
+import com.example.test_platform.adapters.pladapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,11 +32,11 @@ import java.util.Calendar
 class home()  : Fragment() {
 
     lateinit var recyclerView: RecyclerView
-    lateinit var myadapter: AlbAdapter
+    lateinit var myadapter: albadapter
     lateinit var pl_rcv:RecyclerView
-    lateinit var pl_adapter:PLadapter
+    lateinit var pl_adapter:pladapter
     lateinit var hits_rcy:RecyclerView
-    lateinit var albumsadp:Albs_adapter
+    lateinit var albumsadp:albs_adapter
     lateinit var mash_rcy:RecyclerView
     lateinit var hiph:RecyclerView
     lateinit var reco:RecyclerView
@@ -97,7 +97,7 @@ class home()  : Fragment() {
 
 
         notification.setOnClickListener {
-            val fragment =notifications()
+            val fragment =notification()
             val transaction = (context as AppCompatActivity).supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_frame, fragment)
             transaction.addToBackStack(null)
@@ -144,7 +144,7 @@ class home()  : Fragment() {
         PlaylistData.enqueue(object : Callback<album?> {
             override fun onResponse(call: Call<album?>, response: Response<album?>) {
                 val dataList = response.body()?.albums ?: emptyList()
-                pl_adapter = PLadapter(requireActivity(), dataList)
+                pl_adapter = pladapter(requireActivity(), dataList)
                 pl_rcv.adapter =pl_adapter
             }
 
@@ -173,7 +173,7 @@ class home()  : Fragment() {
         retrofitDataAlbum.enqueue(object : Callback<album?> {
             override fun onResponse(call: Call<album?>, response: Response<album?>) {
                 val dataList = response.body()?.albums ?: emptyList()
-                myadapter = AlbAdapter(requireActivity(), dataList)
+                myadapter = albadapter(requireActivity(), dataList)
                 recyclerView.adapter = myadapter
                 txt_artist.visibility=View.VISIBLE
             }
@@ -198,7 +198,7 @@ class home()  : Fragment() {
         retrofithits.enqueue(object :Callback<album?> {
             override fun onResponse(call: Call<album?>, response: Response<album?>) {
                 val dL = response.body()?.albums ?: emptyList()
-                albumsadp = Albs_adapter(requireActivity(), dL)
+                albumsadp = albs_adapter(requireActivity(), dL)
                 hits_rcy.adapter = albumsadp
                 txt_hits.visibility=View.VISIBLE
             }
@@ -225,7 +225,7 @@ class home()  : Fragment() {
         retrofit_mash.enqueue(object :Callback<album?> {
             override fun onResponse(call: Call<album?>, response: Response<album?>) {
                 val dL = response.body()?.albums ?: emptyList()
-                albumsadp = Albs_adapter(requireActivity(), dL)
+                albumsadp = albs_adapter(requireActivity(), dL)
                 mash_rcy.adapter = albumsadp
                 txt_mashup.visibility=View.VISIBLE
             }
@@ -251,7 +251,7 @@ class home()  : Fragment() {
         retorfit_hip.enqueue(object : Callback<album?> {
             override fun onResponse(call: Call<album?>, response: Response<album?>) {
                 val dataList = response.body()?.albums ?: emptyList()
-                myadapter = AlbAdapter(requireActivity(), dataList)
+                myadapter = albadapter(requireActivity(), dataList)
                 hiph.adapter = myadapter
                 txt_hip.visibility=View.VISIBLE
             }
@@ -278,7 +278,7 @@ class home()  : Fragment() {
         retro_recu.enqueue(object :Callback<album?> {
             override fun onResponse(call: Call<album?>, response: Response<album?>) {
                 val dL = response.body()?.albums ?: emptyList()
-                albumsadp = Albs_adapter(requireActivity(), dL)
+                albumsadp = albs_adapter(requireActivity(), dL)
                 reco.adapter = albumsadp
                 txt_rcy.visibility=View.VISIBLE
             }

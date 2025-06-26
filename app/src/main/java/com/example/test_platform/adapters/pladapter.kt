@@ -1,5 +1,5 @@
 package com.example.test_platform.adapters
-package com.rockbuilds.soundify.adapters
+
 
 import android.app.Activity
 import android.os.Bundle

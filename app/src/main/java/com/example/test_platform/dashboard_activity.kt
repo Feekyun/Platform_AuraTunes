@@ -1,46 +1,44 @@
 package com.example.test_platform
 
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.test_platform.fragments.home
+import com.example.test_platform.fragments.progress_bar
 
-class dashboard_activity : AppCompatActivity() {
-
-    private lateinit var homeIcon: ImageView
-    private lateinit var searchIcon: ImageView
-    private lateinit var libraryIcon: ImageView
-
+class dashboard_activity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard_activity)
 
-        // Inisialisasi view
-        homeIcon = findViewById(R.id.home_icon)
-        searchIcon = findViewById(R.id.srch_icn)
-        libraryIcon = findViewById(R.id.libr_icn)
+        // Initialize progress bar fragment
+        lateinit var progressBarFragment: Fragment
+        progressBarFragment = progress_bar()
 
-        // Default fragment saat pertama kali dibuka
-        replaceFragment(HomeFragment())
+        // Show progress bar initially
+        AddFragment(progressBarFragment)
 
-        // Navigasi klik
-        homeIcon.setOnClickListener {
-            replaceFragment(HomeFragment())
-        }
-
-        searchIcon.setOnClickListener {
-            replaceFragment(SearchFragment())
-        }
-
-        libraryIcon.setOnClickListener {
-            replaceFragment(LibraryFragment())
-        }
+        fetchDataForHome()
     }
 
-    // Fungsi ganti fragment
+    private fun AddFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTraction = fragmentManager.beginTransaction()
+        fragmentTraction.add(R.id.fragment_frame, fragment)
+        fragmentTraction.commit()
+    }
+
     private fun replaceFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_frame, fragment)
-        transaction.commit()
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_frame, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
+    private fun fetchDataForHome() {
+        android.os.Handler().postDelayed({
+            AddFragment(home())
+        }, 2000) // Delay for 2 seconds
     }
 }
