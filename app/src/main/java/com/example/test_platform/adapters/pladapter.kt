@@ -11,12 +11,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test_platform.data_class.albumx
-import com.example.test_platform.fragments.a
-import com.rockbuilds.soundify.R
+import com.example.test_platform.fragments.album_tracks
+import com.example.test_platform.R
 import com.squareup.picasso.Picasso
 
-class PLadapter(val context: Activity, val Playlist:List<AlbumX>):
-    RecyclerView.Adapter<PLadapter.MyViewHolder>() {
+class pladapter(val context: Activity, val Playlist:List<albumx>):
+    RecyclerView.Adapter<pladapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val img:ImageView
@@ -29,9 +29,9 @@ class PLadapter(val context: Activity, val Playlist:List<AlbumX>):
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PLadapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): pladapter.MyViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.item_playlists, parent, false)
-        return PLadapter.MyViewHolder(itemView)
+        return pladapter.MyViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
