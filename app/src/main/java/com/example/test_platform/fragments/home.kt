@@ -127,7 +127,9 @@ class home()  : Fragment() {
 
 
         //fetch Grid Playlists
-        val playlistid= listOf("5APZ2ECPRfe0cddST1jOOF",
+        val playlistid= listOf(
+            "4r3eFpgvlQdHsJVBv9IY5D",
+
             "7sHrPadM39466NY7DW3s4r",
             "7pQTHwx9EU9Jni7Z1CWkT5",
             "6NvpMMAPklMO4SvieenEKT",
@@ -154,15 +156,14 @@ class home()  : Fragment() {
 
         //Fetch Top artist Albums Data
         val albumIds = listOf(
-            "4xeWDuTiI7eEyMiQAtVBp3",
-            "6UtgXbhq3Y2HISrGamfnro",
-            "7g7aT1QRPm6eQzTFnkxqtl",
-            "6bpBiAg8JiNLreVexDpFPC",
-            "4dYNdtPc5EUSmKtyZ9x0l0",
-            "3HlLWECHDAx5FuFFktQWNj",
-            "1dNAXHTY5Ezn0hcH7N5BsH",
-            "3q6uhwTdA7ygXyZpYfNpVh",
-            "4PMVBKIe8o2iixsVkGDMBG"
+            "47z98pKd71yIbgXwe9LPVC",
+            "7gW0r5CkdEUMm42w9XpyZO",
+            "3l0CmX0FuQjFxr8SK7Vqag",
+            "5K4W6rqBFWDnAN6FQUkS6x",
+            "6HvZYsbFfjnjFrWF950C9d",
+            "4V8LLVI7PbaPR0K2TGSxFF",
+            "5069JTmv5ZDyPeZaCCXiCg",
+            "6qqNVTkY8uBg9cP3Jd7DAH"
         )
         val albumIdsString = albumIds.joinToString(",")
         val retrofitDataAlbum = retrofitBuilder.getAlbumData(albumIdsString)
