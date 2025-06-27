@@ -56,14 +56,12 @@ class home()  : Fragment() {
         pl_rcv=view.findViewById(R.id.rcy_playlists)
         hits_rcy=view.findViewById(R.id.hits24)
         mash_rcy=view.findViewById(R.id.mashups20)
-        hiph=view.findViewById(R.id.hiphop)
         reco=view.findViewById(R.id.rfy)
 
         //Albums Titles
         val txt_artist=view.findViewById<TextView>(R.id.artists)
         val txt_hits=view.findViewById<TextView>(R.id.hits)
         val txt_mashup=view.findViewById<TextView>(R.id.mashup)
-        val txt_hip=view.findViewById<TextView>(R.id.hh)
         val txt_rcy=view.findViewById<TextView>(R.id.rcy)
 
 
@@ -76,8 +74,6 @@ class home()  : Fragment() {
 
         hits_rcy.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         mash_rcy.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        hiph.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
         reco.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         // Get the current time
@@ -129,13 +125,12 @@ class home()  : Fragment() {
 
         //fetch Grid Playlists
         val playlistid= listOf(
-            "4r3eFpgvlQdHsJVBv9IY5D",
-
-            "7sHrPadM39466NY7DW3s4r",
-            "7pQTHwx9EU9Jni7Z1CWkT5",
-            "6NvpMMAPklMO4SvieenEKT",
-            "60V986cjpv3YVoUEIKdKvy",
-            "6al2VdKbb6FIz9d7lU7WRB"
+            "20r762YmB5HeofjMCiPMLv", //Kanye
+            "7vwi3kXdpkaRO3if4N2gBN", //IVE
+            "5zi7WsKlIiUXv09tbGLKsE", //Tyler
+            "1qOD7pel3w9en2JKQ3l6Ha", //NMIXX
+            "18NOKLkZETa4sWwLMIm0UZ", //Travis
+            "3gHhPm8z8tid1kvpniUKuK" //Aespa
         )
         val playlistidStr=playlistid.joinToString(",")
 
@@ -157,14 +152,14 @@ class home()  : Fragment() {
 
         //Fetch Top artist Albums Data
         val albumIds = listOf(
-            "47z98pKd71yIbgXwe9LPVC",
-            "7gW0r5CkdEUMm42w9XpyZO",
-            "3l0CmX0FuQjFxr8SK7Vqag",
-            "5K4W6rqBFWDnAN6FQUkS6x",
-            "6HvZYsbFfjnjFrWF950C9d",
-            "4V8LLVI7PbaPR0K2TGSxFF",
-            "5069JTmv5ZDyPeZaCCXiCg",
-            "6qqNVTkY8uBg9cP3Jd7DAH"
+            "5agEAxt8vks5Xk0NfEbI5D", //bernadya
+            "1HMLpmZAnNyl9pxvOnTovV", //Newjeans
+            "1hmlhl74JfLyUqmqtCwvFb", //Laufey
+            "2Ek1q2haOnxVqhvVKqMvJe", //Kanye
+            "1KNUCVXgIxKUGiuEB8eG0i", //Clairo
+            "0U28P0QVB1QRxpqp5IHOlH", //Tyler
+            "7aJuG4TFXa2hmE4z1yxc3n", //Billie
+            "12iBcJgeaPMhrO9YlOaMba" //YungKai
         )
         val albumIdsString = albumIds.joinToString(",")
         val retrofitDataAlbum = retrofitBuilder.getAlbumData(albumIdsString)
@@ -185,12 +180,12 @@ class home()  : Fragment() {
         })
 
         //2024 hits
-        val hits_id = listOf("0KvWbswDD0ksvFayBl6gUz",
-            "0a183xiCHiC1GQd8ou7WXO",
-            "1YlugBItLrdu7CEZwRGskr",
-            "3WLJmMZUeDOuERFAk1Mxs6",
-            "6mOSDGo8ZREISAbaiTMW5J",
-            "6AgKY9DZqh6C2lkMyCC8pn")
+        val hits_id = listOf("75KyCmWatZRvlMcMRed9BG",
+            "6XVW3zoK1nmskW7drvHy9h",
+            "0TMmGHybMKtsjBBEmwXHkF",
+            "1Rey8BJT0RtzfDfxGjnp23",
+            "1DAuVHMlBvIjzWZALSUXbn",
+            "55Rgrt92qQCdUgtDJhvsPG")
         val hitsid_string=hits_id.joinToString(",")
 
         val retrofithits=retrofitBuilder.getAlbumData(hitsid_string)
@@ -209,15 +204,13 @@ class home()  : Fragment() {
         })
 
         //20's Mashups
-        val mashup20=listOf("4OYdTHNgjhXzgVjbqsb0tO",
-            "5xjaz957o6YGSXmlfd2tex",
-            "2Lxoc72vRTGdQfMvj7Ovi1",
-            "2KZs4INik6X4KeZEsEWEm4",
-            "2cUzlmLfL5LUTSEk7qG09k",
-            "7pbKuvQHUTwbq4FbevvEca",
-            "0Rkv5iqjF2uenfL0OVB8hg",
-            "3EkmvTqyKrnMw1WiVpsSwF",
-            "2CUXo26JAWIbQx0EVMnjpA",
+        val mashup20=listOf("0FZK97MXMm5mUQ8mtudjuK", //Black Parade
+            "3DuiGV3J09SUhvp8gqNx8h", //Three Cheers
+            "4SZko61aMnmgvNhfhgTuD3", //Graduation
+            "5pTq5IXRivno3gGATveA4z", //Bintang Di Surga
+            "0H4ELcHequ3OligrjWfrZP", //So Wrong
+            "3svp0TRDC5MMUAPNMimAi1", //Wonder Years
+            "0gwS2D9sukMLXNvleEnYr2" //For Lovers
         )
         val mash_string=mashup20.joinToString(",")
         val retrofit_mash=retrofitBuilder.getAlbumData(mash_string)
@@ -235,43 +228,12 @@ class home()  : Fragment() {
             }
         })
 
-        //Hip Hop
-        val rap_id=listOf("1xXv2wox60JAkIKUl8QwWp",
-            "6CiopvBPnSPd7G6l3qbbHt",
-            "0XDtCjokUgSrL527Ftk0xE",
-            "3TWJqzaophqIi6ZIm5wkux",
-            "16PSZwABl4VFJvfDFOPOoB",
-            "0LcyzKKw3RjFKL6ygISTeU",
-        )
-        val rap_string=rap_id.joinToString(",")
-
-        val retorfit_hip = retrofitBuilder.getAlbumData(rap_string)
-
-
-        retorfit_hip.enqueue(object : Callback<album?> {
-            override fun onResponse(call: Call<album?>, response: Response<album?>) {
-                val dataList = response.body()?.albums ?: emptyList()
-                myadapter = albadapter(requireActivity(), dataList)
-                hiph.adapter = myadapter
-                txt_hip.visibility=View.VISIBLE
-            }
-
-            override fun onFailure(call: Call<album?>, t: Throwable) {
-                //On  API failure
-                Log.e("ERROR", "Failure " + t.message)
-            }
-        })
-
-
         // recommended
-        val rec_uid=listOf("2xfAmgKBQroCYbDnl18me3",
-            "0MPHvcqKbQQl6z7mtrmTAo",
-            "4UldFWVMJgHPsgBF1jIzuU",
-            "2jYkg3tbnUceBK1Gt0Hb7k",
-            "1fQd1LKKDndPgcdHKs6WQM",
-            "1n4k7qcOWcnphiLVajCLMk",
-            "0pc4JFQ72mz6k7BtY7FawU",
-            "4RqyXIo6nHMpUtjFYQBdPs"
+        val rec_uid=listOf("4SVd1APxtjPLbghqMzqmBq",
+            "5Y5dkZeSlePrTopuETspAh",
+            "56xGIqUN2Xj6jKsj88SUnZ",
+            "1pCA38N6MkLlthXtAOvZTU",
+            "3QKXWxY09gFSdsOD9JWJDl"
         )
         val rec_string=rec_uid.joinToString(",")
         val retro_recu=retrofitBuilder.getAlbumData(rec_string)

@@ -9,14 +9,15 @@ import retrofit2.http.Query
 
 interface DataInterface {
     @Headers(
-        "X-RapidAPI-Key: 719ca6861bmsh53d5069278b7461p149240jsnac926c30abdd",
+        "X-RapidAPI-Key: 9ca8761750msh99db197d603a12bp1cb771jsn0698074b172d",
         "X-RapidAPI-Host: spotify23.p.rapidapi.com"
     )
     @GET("albums")
     fun getAlbumData(@Query("ids") query: String): Call<album>
 
+
     @Headers(
-        "X-RapidAPI-Key: 719ca6861bmsh53d5069278b7461p149240jsnac926c30abdd",
+        "X-RapidAPI-Key: 9ca8761750msh99db197d603a12bp1cb771jsn0698074b172d",
         "X-RapidAPI-Host: spotify23.p.rapidapi.com"
     )
     @GET("search/")

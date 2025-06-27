@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
-    android:clipToPadding="false"
-    tools:context=".YourActivity">
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -166,27 +165,6 @@
             android:orientation="horizontal"
             android:paddingTop="10dp" />
 
-
-        <TextView
-            android:id="@+id/hh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Indian Hiphop"
-            android:paddingTop="25dp"
-            android:textColor="@color/white"
-            android:visibility="invisible"
-            android:paddingStart="22sp"
-            android:textSize="22sp"
-            android:fontFamily="@font/circularbold"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/hiphop"
-            android:paddingStart="7dp"
-            android:paddingEnd="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingTop="10dp" />
 
         <TextView
             android:id="@+id/rcy"

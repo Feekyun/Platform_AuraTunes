@@ -2,8 +2,6 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Test_Platform" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Status bar warna putih -->
-        <item name="android:statusBarColor">@color/pink</item>
-        <item name="android:windowLightStatusBar">true</item>
 
         <!-- Ubah warna utama supaya nggak ungu -->
         <item name="colorPrimary">@color/black</item>
