@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pink">#e93b6c</color>
+    <color name="grey">#c6c6c6</color>
+    <color name="purple">#bd70bf</color>
+    <color name="primary">#1A73E8</color>       <!-- biru -->
+    <color name="onPrimary">#FFFFFF</color>     <!-- teks di atas primary -->
+    <color name="status_bar">#F5F5F5</color>     <!-- putih terang -->
+    <color name="background">#FAFAFA</color>    <!-- latar -->
 </resources>
+

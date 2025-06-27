@@ -6,29 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".login_page"> <ImageView
-    android:id="@+id/iv_logo"
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="100dp"
-    android:adjustViewBounds="true"
-    android:src="@drawable/logo1"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".login_page">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="LOGIN"
-        android:textColor="@android:color/black"
+        android:layout_marginTop="40dp"
+        android:text="Time to Vibe!"
+        android:textColor="@color/pink"
         android:textSize="24sp"
+        android:fontFamily="@font/plusjakarta"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
@@ -39,6 +45,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="Email"
+        android:textColorHint="@color/grey"
+        app:hintTextColor="@color/pink"
+        app:boxStrokeColor="@color/pink"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
@@ -49,6 +58,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
+            android:textColor="@color/purple"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
@@ -64,6 +74,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:hint="Password"
+        android:textColorHint="@color/grey"
+        app:hintTextColor="@color/pink"
+        app:boxStrokeColor="@color/pink"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
@@ -75,18 +88,22 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
+            android:textColor="@color/purple"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cb_remember_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Remember me"
+        android:textColor="@color/grey"
+        app:buttonTint="@color/purple"
+        app:buttonIconTint="@color/white"
         app:layout_constraintStart_toStartOf="@id/til_password"
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
@@ -95,6 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot the password?"
+        android:textColor="@color/grey"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/cb_remember_me"
         app:layout_constraintEnd_toEndOf="@id/til_password"
@@ -102,10 +120,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
+        android:backgroundTint="@color/pink"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:text="Login"
+        android:textColor="#ffffff"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:cornerRadius="30dp"
@@ -131,6 +151,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="or continue with"
+        android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="@id/separator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,8 +169,8 @@
 
         <ImageButton
             android:id="@+id/btn_google_login"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/google" />
 
@@ -161,6 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="Don't have an account? Sign Up"
+        android:textColor="@color/grey"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

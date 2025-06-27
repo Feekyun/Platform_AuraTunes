@@ -48,7 +48,6 @@ class home()  : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val greeting = view.findViewById<TextView>(R.id.greeting)
         val notification=view.findViewById<ImageView>(R.id.notifications)
         val history=view.findViewById<ImageView>(R.id.history)
         val gear=view.findViewById<ImageView>(R.id.setting)
@@ -93,7 +92,6 @@ class home()  : Fragment() {
             in 16..23 -> "Good evening"
             else -> "NULL"
         }
-        greeting.text = greetingText
 
 
         notification.setOnClickListener {

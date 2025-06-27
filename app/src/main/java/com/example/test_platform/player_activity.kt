@@ -17,6 +17,8 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import com.squareup.picasso.Picasso
 import java.io.IOException
 
@@ -32,6 +34,11 @@ class player_activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // ✅ Atur warna status bar jadi putih dan ikon jadi gelap
+        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+        WindowCompat.getInsetsController(window, window.decorView)?.isAppearanceLightStatusBars = true
+
         setContentView(R.layout.player_activity)
 
         val trackName = intent.getStringExtra("track_name")
@@ -49,13 +56,13 @@ class player_activity : AppCompatActivity() {
         val textTrack = findViewById<TextView>(R.id.track_text)
         val textArtist = findViewById<TextView>(R.id.artist_text)
         val albumCover = findViewById<ImageView>(R.id.album_image)
-        val back=findViewById<ImageView>(R.id.back_exit)
-        val dots=findViewById<ImageView>(R.id.dots)
-        val like=findViewById<ImageView>(R.id.like_btn)
-        val shuffle=findViewById<ImageView>(R.id.shuffle)
-        val loop=findViewById<ImageView>(R.id.loop)
-        val play_next=findViewById<ImageView>(R.id.next)
-        val previous=findViewById<ImageView>(R.id.previous)
+        val back = findViewById<ImageView>(R.id.back_exit)
+        val dots = findViewById<ImageView>(R.id.dots)
+        val like = findViewById<ImageView>(R.id.like_btn)
+        val shuffle = findViewById<ImageView>(R.id.shuffle)
+        val loop = findViewById<ImageView>(R.id.loop)
+        val playNext = findViewById<ImageView>(R.id.next)
+        val previous = findViewById<ImageView>(R.id.previous)
         durationText = findViewById(R.id.total_dura)
         startText = findViewById(R.id.start_dura)
         seekBar = findViewById(R.id.seek_bar)
@@ -85,7 +92,7 @@ class player_activity : AppCompatActivity() {
             }
         }
 
-        initializeSeekBar(30000) // 30 seconds in milliseconds
+        initializeSeekBar(30000)
 
         val playPauseButton = findViewById<ImageView>(R.id.play_pause)
 
@@ -102,38 +109,30 @@ class player_activity : AppCompatActivity() {
                 handler.removeCallbacksAndMessages(null)
             }
         }
-        back.setOnClickListener {
-            finish()
-        }
-        dots.setOnClickListener {
-            showDialog()
-        }
+
+        back.setOnClickListener { finish() }
+
+        dots.setOnClickListener { showDialog() }
+
         like.setOnClickListener {
-            val toast = Toast.makeText(this, "Song Liked", Toast.LENGTH_SHORT)
-            toast.show()
+            Toast.makeText(this, "Song Liked", Toast.LENGTH_SHORT).show()
         }
+
         shuffle.setOnClickListener {
-            val toast = Toast.makeText(this, "Tracks Shuffled", Toast.LENGTH_SHORT)
-            toast.show()
+            Toast.makeText(this, "Tracks Shuffled", Toast.LENGTH_SHORT).show()
         }
-        loop.setOnClickListener{
-            val toast = Toast.makeText(this, "Track Looped", Toast.LENGTH_SHORT)
-            toast.show()
+
+        loop.setOnClickListener {
+            Toast.makeText(this, "Track Looped", Toast.LENGTH_SHORT).show()
         }
-        play_next.setOnClickListener {
-            val toast = Toast.makeText(this, "API Limitation! can't play Next", Toast.LENGTH_LONG)
-            toast.show()
+
+        playNext.setOnClickListener {
+            Toast.makeText(this, "API Limitation! can't play Next", Toast.LENGTH_LONG).show()
         }
+
         previous.setOnClickListener {
-            val toast = Toast.makeText(this, "API Limitation! can't Stack Back", Toast.LENGTH_LONG)
-            toast.show()
+            Toast.makeText(this, "API Limitation! can't Stack Back", Toast.LENGTH_LONG).show()
         }
-
-
-
-
-
-
     }
 
     private fun initializeSeekBar(duration: Int) {
@@ -141,17 +140,16 @@ class player_activity : AppCompatActivity() {
 
         handler.post(object : Runnable {
             override fun run() {
-                val progress = seekBar.progress + 1000 // incrementing by 1 second
+                val progress = seekBar.progress + 1000
                 seekBar.progress = progress
                 startText.text = formatDuration(progress)
 
                 if (progress < duration && !isPaused) {
-                    handler.postDelayed(this, 1000) // update every second
+                    handler.postDelayed(this, 1000)
                 }
             }
         })
     }
-
 
     private fun showDialog() {
         val dialog = Dialog(this)
@@ -162,25 +160,23 @@ class player_activity : AppCompatActivity() {
         val like: LinearLayout = dialog.findViewById(R.id.like)
         val download: LinearLayout = dialog.findViewById(R.id.download)
         val queue: LinearLayout = dialog.findViewById(R.id.queue)
-        val share: LinearLayout=dialog.findViewById(R.id.share)
+        val share: LinearLayout = dialog.findViewById(R.id.share)
 
         like.setOnClickListener {
-            val toast = Toast.makeText(this, "Album Liked", Toast.LENGTH_SHORT)
-            toast.show()
+            Toast.makeText(this, "Album Liked", Toast.LENGTH_SHORT).show()
             dialog.hide()
         }
 
         download.setOnClickListener {
-            val toast = Toast.makeText(this, "Only for Premium users", Toast.LENGTH_SHORT)
-            toast.show()
+            Toast.makeText(this, "Only for Premium users", Toast.LENGTH_SHORT).show()
             dialog.hide()
         }
 
         queue.setOnClickListener {
-            val toast = Toast.makeText(this, "Album Added to queue", Toast.LENGTH_SHORT)
-            toast.show()
+            Toast.makeText(this, "Album Added to queue", Toast.LENGTH_SHORT).show()
             dialog.hide()
         }
+
         share.setOnClickListener {
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"

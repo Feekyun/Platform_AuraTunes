@@ -5,51 +5,47 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.test_platform.databinding.LoginPageBinding // Import kelas binding yang digenerate
+import androidx.core.view.WindowCompat
+import androidx.core.content.ContextCompat
+import com.example.test_platform.databinding.LoginPageBinding
 
 class login_page : AppCompatActivity() {
 
-    // Deklarasikan variabel binding
     private lateinit var binding: LoginPageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inisialisasi binding
+        // ✅ Ubah status bar jadi putih & ikon status bar jadi gelap
+        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+        WindowCompat.getInsetsController(window, window.decorView)?.isAppearanceLightStatusBars = true
+
+        // Inisialisasi view binding
         binding = LoginPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set OnClickListener pada tombol login
+        // Tombol login
         binding.btnLogin.setOnClickListener {
             handleLogin()
         }
 
-        // Tambahan: Contoh navigasi ke halaman register
+        // Navigasi ke halaman register (jika kamu aktifkan nanti)
         // binding.tvRegister.setOnClickListener {
         //     val intent = Intent(this, RegisterPageActivity::class.java)
         //     startActivity(intent)
         // }
     }
 
-    /**
-     * Fungsi untuk menangani logika saat tombol login ditekan.
-     */
     private fun handleLogin() {
         val email = binding.etEmail.text.toString().trim()
         val password = binding.etPassword.text.toString().trim()
 
         if (validateInput(email, password)) {
-            // TODO: Tambahkan logika autentikasi dengan backend di sini
-
-            // Jika validasi berhasil, lanjutkan ke dashboard
+            // TODO: Tambahkan logika autentikasi (misalnya ke Firebase, API, dll)
             openDashboard()
         }
     }
 
-    /**
-     * Fungsi untuk memvalidasi input email dan password dari pengguna.
-     * @return true jika input valid, false jika tidak.
-     */
     private fun validateInput(email: String, password: String): Boolean {
         if (email.isEmpty()) {
             binding.etEmail.error = "Email tidak boleh kosong"
@@ -69,7 +65,7 @@ class login_page : AppCompatActivity() {
             return false
         }
 
-        // Tambahan: Validasi panjang password
+        // Validasi tambahan jika mau
         // if (password.length < 8) {
         //     binding.etPassword.error = "Password minimal 8 karakter"
         //     binding.etPassword.requestFocus()
@@ -79,13 +75,9 @@ class login_page : AppCompatActivity() {
         return true
     }
 
-    /**
-     * Fungsi untuk berpindah ke halaman Dashboard.
-     */
     private fun openDashboard() {
-        // Ganti DashboardActivity::class.java dengan nama activity dashboard Anda yang sebenarnya
         val intent = Intent(this, dashboard_activity::class.java)
         startActivity(intent)
-        finish() // Menutup activity login agar tidak bisa kembali dengan tombol back
+        finish()
     }
 }
