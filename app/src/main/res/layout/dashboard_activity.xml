@@ -92,14 +92,14 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/libr_icn" />
+                android:src="@drawable/setting_icn" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/circularthin"
-                android:text="Your Library"
+                android:text="Setting"
                 android:textColor="@color/white"
                 android:textSize="10sp" />
 
