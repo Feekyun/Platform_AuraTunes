@@ -32,5 +32,8 @@
         <activity
             android:name=".login_page"
             android:exported="false"/>
+
+        <activity android:name="profile_activity"
+            android:exported="false"/>
     </application>
 </manifest>

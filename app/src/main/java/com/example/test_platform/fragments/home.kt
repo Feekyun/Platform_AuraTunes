@@ -1,12 +1,12 @@
 package com.example.test_platform.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.content.Intent
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,9 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test_platform.API_interfaces.DataInterface
 import com.example.test_platform.data_class.album
-import com.example.test_platform.fragments.history
-import com.example.test_platform.fragments.notification
-import com.example.test_platform.fragments.setting
 import com.example.test_platform.R
 import com.example.test_platform.adapters.albadapter
 import com.example.test_platform.adapters.albs_adapter
@@ -38,8 +35,8 @@ class home()  : Fragment() {
     lateinit var hits_rcy:RecyclerView
     lateinit var albumsadp:albs_adapter
     lateinit var mash_rcy:RecyclerView
-    lateinit var hiph:RecyclerView
     lateinit var reco:RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -250,7 +247,12 @@ class home()  : Fragment() {
                 Log.e("ERROR", "Failure " + t.message)
             }
         })
+        val profilePicture = view.findViewById<ImageView>(R.id.profile_picture)
 
+        profilePicture.setOnClickListener {
+            val intent = Intent(requireContext(), com.example.test_platform.profile_activity::class.java)
+            startActivity(intent)
+        }
         return view
     }
 }

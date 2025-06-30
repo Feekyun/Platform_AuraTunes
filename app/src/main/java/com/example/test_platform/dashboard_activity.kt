@@ -1,6 +1,8 @@
 package com.example.test_platform
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.content.ContextCompat
@@ -9,20 +11,32 @@ import com.example.test_platform.fragments.home
 import com.example.test_platform.fragments.progress_bar
 
 class dashboard_activity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ✅ Status bar putih dan ikon hitam
         window.statusBarColor = ContextCompat.getColor(this, R.color.white)
         WindowCompat.getInsetsController(window, window.decorView)?.isAppearanceLightStatusBars = true
 
         setContentView(R.layout.dashboard_activity)
 
-        // Initialize and show progress bar fragment
+        // Show progress bar fragment
         val progressBarFragment = progress_bar()
         AddFragment(progressBarFragment)
 
+        // Delay to show home fragment
         fetchDataForHome()
+
+        val homeIcon = findViewById<ImageView>(R.id.home_icon)
+        val searchIcon = findViewById<ImageView>(R.id.srch_icn)
+
+        homeIcon.setOnClickListener {
+            replaceFragment(home())
+        }
+
+        searchIcon.setOnClickListener {
+            replaceFragment(com.example.test_platform.fragments.search())
+        }
     }
 
     private fun AddFragment(fragment: Fragment) {
@@ -43,6 +57,6 @@ class dashboard_activity : AppCompatActivity() {
     private fun fetchDataForHome() {
         android.os.Handler().postDelayed({
             AddFragment(home())
-        }, 2000) // Delay 2 detik
+        }, 2000)
     }
 }
