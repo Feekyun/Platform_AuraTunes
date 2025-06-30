@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AuraTunes</string>
     <string name="search_result_prefix">Showing result for: %1$s</string>
+    <string name="default_web_client_id">922678605197-hlk3r13t0i3q0q1du76kedhsad77qrst.apps.googleusercontent.com</string>
 </resources>

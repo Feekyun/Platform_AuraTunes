@@ -36,9 +36,8 @@ android {
         jvmTarget = "11"
     }
 
-    // ✅ Tambahkan di sini
     buildFeatures {
-        viewBinding = true // opsional, kalau kamu nggak pakai, bisa hapus
+        viewBinding = true
     }
 
     sourceSets {
@@ -80,4 +79,10 @@ dependencies {
     //Picasso for Gson to Image
     implementation ("com.squareup.picasso:picasso:2.8")
 
+    // 🔥 Tambahan untuk Google Login & Firebase Auth
+    implementation("com.google.android.gms:play-services-auth:21.0.0")
+    implementation("com.google.firebase:firebase-auth:23.0.0")
 }
+
+// 🔧 Tambahkan plugin ini di luar blok 'android'
+apply(plugin = "com.google.gms.google-services")

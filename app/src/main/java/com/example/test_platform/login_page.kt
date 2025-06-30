@@ -8,32 +8,77 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.content.ContextCompat
 import com.example.test_platform.databinding.LoginPageBinding
+import com.google.android.gms.auth.api.signin.*
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class login_page : AppCompatActivity() {
 
     private lateinit var binding: LoginPageBinding
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var firebaseAuth: FirebaseAuth
+    private val RC_SIGN_IN = 9001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ✅ Ubah status bar jadi putih & ikon status bar jadi gelap
+        // ✅ Status bar putih
         window.statusBarColor = ContextCompat.getColor(this, R.color.white)
         WindowCompat.getInsetsController(window, window.decorView)?.isAppearanceLightStatusBars = true
 
-        // Inisialisasi view binding
+        // ✅ View binding
         binding = LoginPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tombol login
+        // ✅ Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        // ✅ Konfigurasi Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id)) // pastikan string ini ada di strings.xml
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        // ✅ Tombol Login Email/Password
         binding.btnLogin.setOnClickListener {
             handleLogin()
         }
 
-        // Navigasi ke halaman register (jika kamu aktifkan nanti)
-        // binding.tvRegister.setOnClickListener {
-        //     val intent = Intent(this, RegisterPageActivity::class.java)
-        //     startActivity(intent)
-        // }
+        // ✅ Tombol Login Google
+        binding.btnGoogleLogin.setOnClickListener {
+            val signInIntent = googleSignInClient.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
+        }
+    }
+
+    // ✅ Login Google hasil dari intent
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)!!
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                Toast.makeText(this, "Google Sign-In gagal: ${e.statusCode}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        firebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                    Toast.makeText(this, "Selamat datang, ${user?.displayName}", Toast.LENGTH_SHORT).show()
+                    openDashboard()
+                } else {
+                    Toast.makeText(this, "Autentikasi Gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     private fun handleLogin() {
@@ -41,7 +86,7 @@ class login_page : AppCompatActivity() {
         val password = binding.etPassword.text.toString().trim()
 
         if (validateInput(email, password)) {
-            // TODO: Tambahkan logika autentikasi (misalnya ke Firebase, API, dll)
+            // TODO: Tambahkan login manual/email-password jika kamu pakai
             openDashboard()
         }
     }
@@ -64,13 +109,6 @@ class login_page : AppCompatActivity() {
             binding.etPassword.requestFocus()
             return false
         }
-
-        // Validasi tambahan jika mau
-        // if (password.length < 8) {
-        //     binding.etPassword.error = "Password minimal 8 karakter"
-        //     binding.etPassword.requestFocus()
-        //     return false
-        // }
 
         return true
     }

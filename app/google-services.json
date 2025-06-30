@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "922678605197",
+    "project_id": "auratunes-85899",
+    "storage_bucket": "auratunes-85899.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922678605197:android:93fc4ae95a25fe36ddf9c4",
+        "android_client_info": {
+          "package_name": "com.example.test_platform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922678605197-hlk3r13t0i3q0q1du76kedhsad77qrst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.test_platform",
+            "certificate_hash": "3f4463ab4b25086fcc286cd028b33b6ff06ab8cc"
+          }
+        },
+        {
+          "client_id": "922678605197-h3kn08cfpnvcbmm3ofql8l4di4e7svuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHvS_NkyUQEWwElR-m2oYq9WzmyfVoOSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922678605197-h3kn08cfpnvcbmm3ofql8l4di4e7svuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
