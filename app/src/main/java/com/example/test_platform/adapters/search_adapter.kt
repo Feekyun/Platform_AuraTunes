@@ -7,36 +7,48 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test_platform.data_class.search.data
 import com.example.test_platform.R
+import com.example.test_platform.data_class.search.item
+import com.example.test_platform.data_class.search.datax
+import com.squareup.picasso.Picasso
 
-class search_adapter(val context:Activity,val searchList:List<data>):
-    RecyclerView.Adapter<search_adapter.MyviewHolder>()
-{
-    class MyviewHolder(itemview: View):RecyclerView.ViewHolder(itemview) {
-        val cover:ImageView
-        val title:TextView
-        val artists:TextView
+class search_adapter(
+    val context: Activity,
+    private val searchList: List<item>,
+    private val onItemClick: (datax) -> Unit // <-- add this
+) : RecyclerView.Adapter<search_adapter.MyViewHolder>() {
 
-        init{
-            cover=itemView.findViewById(R.id.cover)
-            title=itemview.findViewById(R.id.title)
-            artists=itemview.findViewById(R.id.artists)
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val cover: ImageView = itemView.findViewById(R.id.cover)
+        val title: TextView = itemView.findViewById(R.id.title)
+        val artists: TextView = itemView.findViewById(R.id.artists)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.item_search, parent, false)
+        return MyViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val trackData = searchList[position].data
+
+        holder.title.text = trackData.name
+        holder.artists.text = trackData.artists.items.joinToString(", ") { it.profile.name }
+
+        val imageUrl = trackData.albumoftrack?.coverArt?.sources?.firstOrNull()?.url
+        if (!imageUrl.isNullOrEmpty()) {
+            Picasso.get().load(imageUrl).into(holder.cover)
+        } else {
+            holder.cover.setImageResource(R.drawable.music_note_24)
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick(trackData)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_search, parent, false)
-        return search_adapter.MyviewHolder(itemView)
-    }
 
-    override fun getItemCount(): Int {
-        return searchList.size
-    }
 
-    override fun onBindViewHolder(holder: MyviewHolder, position: Int) {
-        val Current_data=position
-
-    }
+    override fun getItemCount(): Int = searchList.size
 
 }

@@ -1,4 +1,5 @@
 package com.example.test_platform.data_class.search
 
-class profile {
-}
+data class profile(
+    val name: String
+)

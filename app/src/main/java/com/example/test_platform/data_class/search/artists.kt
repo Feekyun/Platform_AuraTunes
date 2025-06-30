@@ -1,4 +1,5 @@
 package com.example.test_platform.data_class.search
 
-class artists {
-}
+data class artists(
+    val items: List<ItemX>
+)

@@ -1,4 +1,4 @@
 package com.example.test_platform.data_class.search
-
-class coverart {
-}
+data class coverart(
+    val sources: List<source>
+)

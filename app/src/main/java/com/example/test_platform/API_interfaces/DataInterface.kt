@@ -15,6 +15,10 @@ interface DataInterface {
     @GET("albums")
     fun getAlbumData(@Query("ids") query: String): Call<album>
 
+    @GET("tracks/")
+    fun getTrackDetails(@Query("ids") trackId: String): Call<com.example.test_platform.data_class.tracks>
+
+
 
     @Headers(
         "X-RapidAPI-Key: 9ca8761750msh99db197d603a12bp1cb771jsn0698074b172d",

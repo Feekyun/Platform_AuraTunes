@@ -1,4 +1,5 @@
 package com.example.test_platform.data_class.search
 
-class sharinginfo {
-}
+data class sharinginfo(
+    val shareUrl: String
+)

@@ -1,4 +1,5 @@
 package com.example.test_platform.data_class.search
 
-class playability {
-}
+data class playability (
+    val playable: Boolean
+)

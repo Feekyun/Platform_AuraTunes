@@ -1,4 +1,6 @@
 package com.example.test_platform.data_class.search
 
-class data {
-}
+data class data (
+    val query: String,
+    val tracks: tracks
+)

@@ -1,4 +1,5 @@
 package com.example.test_platform.data_class.search
-
-class paginginfo {
-}
+data class paginginfo(
+    val limit: Int,
+    val nextOffset: Int
+)

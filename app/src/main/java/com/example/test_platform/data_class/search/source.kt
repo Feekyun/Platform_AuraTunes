@@ -1,4 +1,7 @@
 package com.example.test_platform.data_class.search
 
-class source {
-}
+data class source(
+    val height: Int,
+    val url: String,
+    val width: Int
+)

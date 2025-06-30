@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AuraTunes</string>
+    <string name="search_result_prefix">Showing result for: %1$s</string>
 </resources>
